@@ -1,0 +1,22 @@
+Question Title: The Missing Project Credentials
+
+Question Link:
+https://my.newtonschool.co/playground/code/7x83ezx6nimm
+
+Solution:
+
+pwd
+grep -R "DB_PASSWORD" EventApp/
+cp EventApp/config/.env EventApp/db_password.txt
+
+Approach:
+
+1. In this question, I have to find the perfect text "DB PASSWORD" and copy the data of that file in which that text is present to a new file in parent directory.
+
+2. First I checked the present working directory where I get I am present in box.
+
+3. After that I used grep with option of -R in which grep is used for searching that expression in file and -R option is used to check recursievly	in all files inside the given path in this case which is EventApp/.
+
+4. From Step 3, I get the output as the perfect location and content of that line also.
+
+5. After that, I copied the path of that file and run cp command and get whole file with content copied into a new file present in EventApp.
