@@ -1,0 +1,37 @@
+Question Title : Advanced File Management
+Question Link : https://my.newtonschool.co/playground/code/4ks5o139cfoh?lecture_hash=v210chxjexei
+
+Solution :
+mkdir project-files
+cd project-files
+touch report.docx summary.docx draft.docx
+cp report.docx report_backup.docx
+mkdir old
+mv draft.docx old
+mv summary.docx final_summary.docx 
+cp final_summary.docx old 
+rm report_backup.docx
+
+Approach:
+
+Set Up the Working Environment :
+Create the main directory project-files to hold all related documents andnavigate (cd) inside it to keep subsequent operations localized.
+
+Initialize Documents:
+Use touch to quickly create three placeholder .docx files: report.docxsummary.docx, and draft.docx.
+
+Create a Temporary Backup:
+Duplicate report.docx as report_backup.docx using cp to preserve a working copy during file reorganization.
+
+Prepare an Archive Space:
+Create a dedicated subfolder named old to store previous, draft, or archivedversions of the project files.
+
+Archive Work-in-Progress Content:
+Move (mv) draft.docx into the old/ directory to declutter the root folder.
+
+Finalize and Archive the Summary:
+Rename summary.docx to final_summary.docx in place.
+Copy (cp) final_summary.docx into the old/ subfolder so an archived copy ispreserved alongside earlier drafts.
+
+Clean Up Temporary Artifacts:
+Remove (rm) the temporary backup report_backup.docx once the reorganization and file transfers are complete.
