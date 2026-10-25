@@ -1,0 +1,28 @@
+Question Title: Build Pipeline Directory Tree
+
+Question Link:https://my.newtonschool.co/playground/code/r2ui5gw5lhqt?lecture_hash=n9ynhcuvkld8
+
+Solution:
+
+mkdir -p pipeline/stages/build pipeline/stages/test/unit/integration pipeline/env/staging pipeline/env/prod pipeline/artifacts/old
+chmod 750 pipeline/stages
+chmod 770 pipeline/artifacts
+chmod 700 pipeline/env
+touch pipeline/stages/build/app.py pipeline/stages/build/config.json pipeline/stages/build/NOTES.md
+echo "Build stage initialized." > pipeline/stages/build/NOTES.md
+touch pipeline/artifacts/old/build.log pipeline/artifacts/old/test.log pipeline/artifacts/old/deploy.log
+chmod 640 pipeline/artifacts/old/build.log pipeline/artifacts/old/test.log pipeline/artifacts/old/deploy.log
+
+Approach:
+
+1. First for directory structure I used mkdir command with -p option which make the normal directory into parent one.
+
+2. As stated in Step 2 of question I used chmod to give the permission to different folders inside pipeline directory.
+
+3. Now I used touch command with full path and file name to create empty files
+
+4. After that append given content into one of the above made file named as NOTES.md.
+
+5. Repeat same concept applied in step 3 to complete step 5.
+
+6. Then after change the permissions to specified permissions in question.
