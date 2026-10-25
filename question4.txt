@@ -1,0 +1,57 @@
+Question title : Deployment Project Permissions
+Question link : https://my.newtonschool.co/playground/code/3wz3wv7c89fo?lecture_hash=vifkrugjcwth
+
+Solution :
+chmod 700 deployment/app/server.py
+chmod 700 deployment/app/handler.py
+chmod 700 deployment/app/settings.py
+chmod 770 deployment/datasets
+chmod 770 deployment/datasets/train.csv
+chmod 770 deployment/datasets/test.csv
+chmod 644 deployment/docs/OVERVIEW.md
+chmod 755 deployment/bin/start.sh
+chmod 755 deployment/bin/stop.sh
+chmod 755 deployment/bin/healthcheck.sh
+ 
+Appproach:
+Octal Bit Translation:** Calculate numeric permissions by summing read (4), write (2), and execute (1) across Owner, Group, and Others.
+
+Source Code Isolation (`700`):** Applied to the Python files so only the owner can read, edit, or execute core app logic, locking out group members and general users.
+
+Directory Boundary Control (`770`):** Applied to the datasets directory to revoke traversal (`x`) and listing (`r`) permissions from outside users, blocking unauthorized directory entry.
+
+Shared Data Collaboration (`770`):** Applied to the CSV files so both the owner and designated group members have full read/write rights for data workflows, with zero outside access.
+
+Tamper-Proof Documentation (`644`):** Applied to the overview markdown file so team members and CI tools can read the docs, while restricting edit access strictly to the owner.
+
+Service Lifecycle Execution (`755`):** Applied to the shell scripts so CI systems and external operators can run health checks and server controls without granting them write permission to alter script code.
+
+Parent-Context Targeting:** Scoped every command using the `deployment` prefix to satisfy the operational constraint of running tasks without moving inside the directory.Question title : Deployment Project Permissions
+Question link : https://my.newtonschool.co/playground/code/3wz3wv7c89fo?lecture_hash=vifkrugjcwth
+
+Solution :
+chmod 700 deployment/app/server.py
+chmod 700 deployment/app/handler.py
+chmod 700 deployment/app/settings.py
+chmod 770 deployment/datasets
+chmod 770 deployment/datasets/train.csv
+chmod 770 deployment/datasets/test.csv
+chmod 644 deployment/docs/OVERVIEW.md
+chmod 755 deployment/bin/start.sh
+chmod 755 deployment/bin/stop.sh
+chmod 755 deployment/bin/healthcheck.sh
+ 
+Appproach:
+Octal Bit Translation:** Calculate numeric permissions by summing read (4), write (2), and execute (1) across Owner, Group, and Others.
+
+Source Code Isolation (`700`):** Applied to the Python files so only the owner can read, edit, or execute core app logic, locking out group members and general users.
+
+Directory Boundary Control (`770`):** Applied to the datasets directory to revoke traversal (`x`) and listing (`r`) permissions from outside users, blocking unauthorized directory entry.
+
+Shared Data Collaboration (`770`):** Applied to the CSV files so both the owner and designated group members have full read/write rights for data workflows, with zero outside access.
+
+Tamper-Proof Documentation (`644`):** Applied to the overview markdown file so team members and CI tools can read the docs, while restricting edit access strictly to the owner.
+
+Service Lifecycle Execution (`755`):** Applied to the shell scripts so CI systems and external operators can run health checks and server controls without granting them write permission to alter script code.
+
+Parent-Context Targeting:** Scoped every command using the `deployment` prefix to satisfy the operational constraint of running tasks without moving inside the directory.
