@@ -1,0 +1,23 @@
+Question Title: Simplify the Compilation Process
+
+Question Link:
+https://my.newtonschool.co/playground/code/9kh4giios2j4?lecture_hash=t5qc0u6ap8tg
+
+Solution:
+
+echo "#!/bin/sh" >> build.sh
+echo "gcc hello.c -o hello" >> build.sh
+echo "chmod +x hello" >> build.sh
+chmod +x build.sh
+./build.sh
+./hello
+
+Approach:
+
+1. In this question, First I define shebang line for script file.
+
+2. Then the compilation command for GNU compiler with output argument.
+
+3. After that command to give permission for execute the new compiled and there after same permission for the script file which is made just above.
+
+4. Then executing both the files will do our process without any error.
