@@ -1,0 +1,21 @@
+Question Title: Execute a Python Script Directly
+
+Question Link:
+https://my.newtonschool.co/playground/code/mepmefz373b4?lecture_hash=t5qc0u6ap8tg
+
+Solution:
+
+echo "#!/usr/bin/env python3" >> hello.py
+echo 'print("Hello from Python")' >> hello.py
+chmod +x hello.py
+./hello.py
+
+Approach:
+
+1. First, I define the environment of working of python as this script is work on python for that we use the default location of python as shebang line "#!/usr/bin/env python3"
+
+2. In next line I add the main python code which one is executed to give the output.
+
+3. After that give the file permission to execute using chmod.
+
+4. And at last run the executable command.
