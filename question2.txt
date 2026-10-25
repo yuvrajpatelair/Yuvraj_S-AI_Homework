@@ -1,0 +1,35 @@
+Question title : Create a Project Folder Structure
+Question link : https://my.newtonschool.co/playground/code/jipp2htnvrww?lecture_hash=v210chxjexei
+
+Solution:
+echo "mkdir service" > create-service 
+echo "cd service" >> create-service 
+echo "mkdir controllers models routes middleware" >> create-service 
+echo "touch server.js README.md" >> create-service
+echo 'echo "API Service" >> README.md' >> create-service
+printf "echo 'console.log(" >> create-service
+printf '"Server started");' >> create-service
+printf "' >> server.js" >> create-service
+# echo "console.log("Server started"); >> server.js"
+chmod +x create-service
+create-service
+cat create-service
+
+Approach:
+State Reset & Script Initialization:
+1.Single redirection (>) overwrites any corrupted script with a clean slate.
+2.A working directory shift (cd service) is embedded so all subsequent file operations use short relative paths.
+
+Batch Directory & File Creation:
+1.Subdirectories (controllers, models, routes, middleware) are scaffolded in a single batch command, resolving naming errors.
+2.Target files (server.js, README.md) are pre-allocated immediately.
+
+Quote Conflict Resolution:
+1.Single quotes protect literal text from premature shell execution for README.md.
+2.For server.js, newline-free printf fragments bypass the three-tier quote collision (shell, echo, JavaScript) by writing the console.log statement piece-by-piece directly into the file.
+
+Elevation, Execution & Verification:
+1.The script is made executable (chmod +x) to convert it into a system command.
+2.Running the command generates the full service architecture.
+
+The file contents are printed to standard output to verify syntax and formatting integrity.
