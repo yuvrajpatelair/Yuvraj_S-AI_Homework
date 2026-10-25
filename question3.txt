@@ -1,0 +1,40 @@
+Question title : Data Breach Response
+Question link :https://my.newtonschool.co/playground/code/orlr84xpc3oo?lecture_hash=vifkrugjcwth
+
+Solution:
+cp breach_response/evidence/log_dump.txt breach_response/log_dump.txt
+chmod 777 breach_response/evidence
+mv breach_response/evidence breach_response/secure
+chmod 555 breach_response/secure/evidence
+chmod 666 breach_response/reports/incident_summary.txt
+echo "Breach confirmed" >> breach_response/reports/incident_summary.txt
+chmod 444 breach_response/reports/incident_summary.txt
+touch breach_response/secure/forensics_report.txt
+echo "Forensics Complete" >> breach_response/secure/forensics_report.txt
+chmod 600 breach_response/secure/forensics_report.txt
+chmod 666 breach_response/reports/incident_summary.txt
+echo "Escalated to security team" >> breach_response/reports/incident_summary.txt
+chmod 444 breach_response/reports/incident_summary.txt 
+
+Approach:
+Direct Read & Copy: Read directly from the source without altering permissions, leveraging existing read/execute rights on the folder and read rights on the file to write a copy into the writable root directory.
+
+Directory Write Elevation: Temporarily grant write access to the directory so its internal metadata entries (such as ..) can be updated during relocation.
+
+Directory Relocation: Move the directory tree into its target parent folder while write permissions are actively available.
+
+Immediate Metadata Lockdown: Restore the moved directory to its original read/execute state (555) using its newly relocated destination path.
+
+File Write Permission Unlock: Temporarily grant write access to bypass the restricted read-only status (444) on the target text file.
+
+In-Place Stream Appending: Append the required string to the bottom of the file using append redirection (>>) without truncating or overwriting existing contents.
+
+Immediate State Restoration: Lock the file back down to its original read-only permission (444) the moment the write operation finishes.
+
+File Creation & Data Population: Pre-allocate the new forensics file and stream the required text directly into the designated secure directory path.
+
+Least-Privilege Mode Enforcement: Restrict the new file's permissions strictly to owner read/write (600), blocking all group and public access.
+
+Secondary Unlock-Append-Lock Cycle: Reopen the report for writing, append the final escalation message, and immediately re-lock it back to read-only (444).
+
+Integrity & Sequence Verification: Stream the file's contents to standard output to confirm both lines were appended sequentially without data loss or corruption.
